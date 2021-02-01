@@ -34,13 +34,21 @@ function cities(){
 	//add the "City" and "Population" columns to the header row
 	$("tr").append("<th>City</th><th>Population</th>");
 	
-	//loop to add a new row for each city
-    for (var i = 0; i < cityPop.length; i++){
-        //assign longer html strings to a variable
-        var rowHtml = "<tr><td>" + cityPop[i].city + "</td><td>" + cityPop[i].population + "</td></tr>";
-        //add the row's html string to the table
-        $("table").append(rowHtml);
-    };
+     //FOREACH LOOP...Example 2.4 line 25
+    cityPop.forEach(function(cityObject){
+        var tr = document.createElement("tr");
+
+        var city = document.createElement("td");
+        city.innerHTML = cityObject.city; //NOTE DIFFERENT SYNTAX
+        tr.appendChild(city);
+
+        var pop = document.createElement("td");
+        pop.innerHTML = cityObject.population; //NOTE DIFFERENT SYNTAX
+        tr.appendChild(pop);
+
+        table.appendChild(tr);
+    });
+
 
     addColumns(cityPop);
     addEvents();
